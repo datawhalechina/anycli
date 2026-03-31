@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `CliTool` ADD COLUMN `starCount` INTEGER NOT NULL DEFAULT 0;

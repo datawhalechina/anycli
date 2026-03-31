@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  name      String?
+  email     String     @unique
+  image     String?    @db.VarChar(2048)
+  handle    String     @unique
+  bio       String?    @db.VarChar(500)
+  // GitHub 等 OAuth 用户可为空；密码登录必须有值
+  password  String?
+  // 审核后台；可库内手动改 true，或注册时邮箱匹配 ADMIN_EMAILS
+  isAdmin   Boolean    @default(false)
+  clis      CliTool[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CliTool {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  description    String   @db.Text
+  version        String?
+  homepage       String?  @db.VarChar(2048)
+  repository     String?  @db.VarChar(2048)
+  license        String?
+  categories     String   @db.Text
+  tags           String   @db.Text
+  installMethod  String?
+  installPackage String?
+  binaryName     String?
+  runExample     String?  @db.Text
+  docsUrls       String?  @db.Text
+  agentHints     String?  @db.Text
+  verified       Boolean  @default(false)
+  published      Boolean  @default(true)
+  authorId       String
+  author         User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  // 详情页 PV：每次打开详情 +1，非去重 UV
+  viewCount      Int      @default(0)
+  // GitHub 仓库 Star（REST stargazers_count），由 scripts/sync-github-stars 更新
+  githubStars           Int       @default(0)
+  githubStarsUpdatedAt DateTime?
+
+  @@index([authorId])
+  @@index([viewCount])
+  @@index([githubStars])
+}

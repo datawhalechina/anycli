@@ -1,0 +1,35 @@
+{
+  "name": "@lightcity/anycli",
+  "version": "0.0.3",
+  "description": "AnyCLI: agent-friendly search/install for CLI tools.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "anycli": "dist/index.js"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "cli",
+    "agent",
+    "ai",
+    "tools",
+    "anycli"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "commander": "^14.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^5.0.0"
+  }
+}
+

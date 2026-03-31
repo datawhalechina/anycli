@@ -1,0 +1,13 @@
+{
+  "name": "AnyCLI",
+  "description": "AnyCLI：面向 Agent 的 CLI 原生平台。提供统一的 CLI 注册与索引目录，让人类与 AI Agent 共同发现与集成命令行工具。",
+  "organization": {
+    "name": "Datawhale",
+    "about_url": "/about"
+  },
+  "cli": {
+    "package": "anycli",
+    "install": "npm install -g anycli",
+    "binary": "anycli"
+  }
+}

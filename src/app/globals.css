@@ -1,26 +1,610 @@
 @import "tailwindcss";
 
+/* 品牌四色：粉 / 奶油黄 / 浅蓝 / 主蓝 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --palette-pink: #fe9ec7;
+  --palette-cream: #f9f6c4;
+  --palette-sky: #89d4ff;
+  --palette-blue: #44acff;
+
+  --background: color-mix(in srgb, var(--palette-cream) 36%, white 64%);
+  --foreground: #163a4a;
+  --muted: #5a6e7a;
+  --border: color-mix(in srgb, var(--palette-blue) 16%, transparent);
+  --surface: rgba(255, 255, 255, 0.9);
+  --elevated: color-mix(in srgb, var(--palette-sky) 20%, transparent);
+  --accent: var(--palette-blue);
+  --accent-soft: color-mix(in srgb, var(--palette-sky) 32%, transparent);
+  --accent-glow: color-mix(in srgb, var(--palette-blue) 38%, transparent);
+  --grid-line: color-mix(in srgb, var(--palette-blue) 10%, transparent);
+  --browse-sheet: color-mix(in srgb, var(--palette-cream) 30%, color-mix(in srgb, var(--palette-sky) 12%, white) 70%);
+
+  --terminal-bg: rgba(22, 38, 52, 0.94);
+  --terminal-chrome: rgba(255, 255, 255, 0.05);
+  --terminal-border: color-mix(in srgb, var(--palette-sky) 40%, transparent);
+  --terminal-prompt: var(--palette-blue);
+  --terminal-command: #f0f7fc;
+  --terminal-dim: #9bb0bf;
+  --terminal-shadow: color-mix(in srgb, var(--palette-blue) 35%, transparent);
+  --agent-tint: color-mix(in srgb, var(--palette-pink) 28%, transparent);
+
+  --hero-glow: radial-gradient(
+      100% 70% at 12% -8%,
+      color-mix(in srgb, var(--palette-pink) 32%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(85% 55% at 96% 4%, color-mix(in srgb, var(--palette-sky) 38%, transparent) 0%, transparent 48%),
+    radial-gradient(55% 42% at 48% 100%, color-mix(in srgb, var(--palette-blue) 22%, transparent) 0%, transparent 52%),
+    linear-gradient(180deg, color-mix(in srgb, var(--palette-cream) 25%, transparent), transparent 42%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121920;
+    --foreground: #eef6fa;
+    --muted: #94a8b5;
+    --border: color-mix(in srgb, var(--palette-sky) 14%, transparent);
+    --surface: rgba(28, 38, 48, 0.92);
+    --elevated: color-mix(in srgb, var(--palette-blue) 12%, transparent);
+    --accent: var(--palette-sky);
+    --accent-soft: color-mix(in srgb, var(--palette-blue) 22%, transparent);
+    --accent-glow: color-mix(in srgb, var(--palette-sky) 35%, transparent);
+    --grid-line: color-mix(in srgb, var(--palette-sky) 8%, transparent);
+    --browse-sheet: color-mix(in srgb, var(--palette-blue) 6%, #0e141c 94%);
+
+    --terminal-bg: rgba(8, 12, 18, 0.96);
+    --terminal-chrome: rgba(255, 255, 255, 0.03);
+    --terminal-border: color-mix(in srgb, var(--palette-sky) 32%, transparent);
+    --terminal-prompt: var(--palette-sky);
+    --terminal-command: #e8f4fc;
+    --terminal-dim: #7d92a3;
+    --terminal-shadow: color-mix(in srgb, var(--palette-blue) 28%, transparent);
+    --agent-tint: color-mix(in srgb, var(--palette-pink) 15%, transparent);
+
+    --hero-glow: radial-gradient(
+        100% 70% at 12% -8%,
+        color-mix(in srgb, var(--palette-pink) 14%, transparent) 0%,
+        transparent 58%
+      ),
+      radial-gradient(85% 55% at 96% 4%, color-mix(in srgb, var(--palette-blue) 12%, transparent) 0%, transparent 48%),
+      radial-gradient(55% 42% at 48% 100%, color-mix(in srgb, var(--palette-sky) 10%, transparent) 0%, transparent 52%);
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+}
+
+/* 浏览页分类圆标（四色轮换） */
+.palette-chip-0 {
+  background-color: color-mix(in srgb, var(--palette-sky) 34%, white);
+  color: #064667;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--palette-blue) 26%, transparent);
+}
+
+.palette-chip-1 {
+  background-color: color-mix(in srgb, var(--palette-pink) 36%, white);
+  color: #7c2d51;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--palette-pink) 32%, transparent);
+}
+
+.palette-chip-2 {
+  background-color: color-mix(in srgb, var(--palette-cream) 42%, white);
+  color: #5a4510;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--palette-sky) 20%, transparent);
+}
+
+.palette-chip-3 {
+  background-color: color-mix(in srgb, var(--palette-blue) 20%, white);
+  color: #034968;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--palette-blue) 28%, transparent);
+}
+
+/* 卡片首字母头像 */
+.palette-avatar-0 {
+  background-color: color-mix(in srgb, var(--palette-sky) 42%, white);
+  color: #053a57;
+}
+
+.palette-avatar-1 {
+  background-color: color-mix(in srgb, var(--palette-pink) 44%, white);
+  color: #702848;
+}
+
+.palette-avatar-2 {
+  background-color: color-mix(in srgb, var(--palette-cream) 48%, white);
+  color: #4d3d0e;
+}
+
+.palette-avatar-3 {
+  background-color: color-mix(in srgb, var(--palette-blue) 24%, white);
+  color: #034060;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .palette-chip-0 {
+    background-color: color-mix(in srgb, var(--palette-sky) 18%, #1c2836);
+    color: #c6ecff;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--palette-blue) 32%, transparent);
+  }
+
+  .palette-chip-1 {
+    background-color: color-mix(in srgb, var(--palette-pink) 16%, #1f2228);
+    color: #ffc8df;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--palette-pink) 25%, transparent);
+  }
+
+  .palette-chip-2 {
+    background-color: color-mix(in srgb, var(--palette-cream) 12%, #1c2430);
+    color: #f5eeb8;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--palette-sky) 18%, transparent);
+  }
+
+  .palette-chip-3 {
+    background-color: color-mix(in srgb, var(--palette-blue) 14%, #1a2430);
+    color: #a8dcff;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--palette-blue) 28%, transparent);
+  }
+
+  .palette-avatar-0 {
+    background-color: color-mix(in srgb, var(--palette-sky) 22%, #1a2430);
+    color: #b6e6ff;
+  }
+
+  .palette-avatar-1 {
+    background-color: color-mix(in srgb, var(--palette-pink) 20%, #1f2230);
+    color: #ffb8d8;
+  }
+
+  .palette-avatar-2 {
+    background-color: color-mix(in srgb, var(--palette-cream) 14%, #1c2430);
+    color: #ebe4a4;
+  }
+
+  .palette-avatar-3 {
+    background-color: color-mix(in srgb, var(--palette-blue) 16%, #1a2836);
+    color: #8fd4ff;
+  }
+}
+
+@keyframes cli-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes cli-border-shift {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.cli-cursor {
+  animation: cli-cursor-blink 1.05s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cli-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.cli-terminal-glow {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--palette-sky) 15%, transparent),
+    0 24px 48px -24px var(--terminal-shadow);
+}
+
+/* 网格背景已移除（保持纯色/光晕背景） */
+
+.site-aurora {
+  opacity: 0.22;
+  background:
+    radial-gradient(70% 55% at 18% 12%, color-mix(in srgb, var(--palette-sky) 38%, transparent) 0%, transparent 60%),
+    radial-gradient(65% 50% at 92% 18%, color-mix(in srgb, var(--palette-pink) 32%, transparent) 0%, transparent 62%),
+    radial-gradient(55% 45% at 45% 92%, color-mix(in srgb, var(--palette-blue) 24%, transparent) 0%, transparent 58%),
+    linear-gradient(
+      115deg,
+      color-mix(in srgb, var(--palette-cream) 18%, transparent),
+      transparent 42%,
+      color-mix(in srgb, var(--palette-sky) 10%, transparent)
+    );
+  background-size: 160% 160%;
+  filter: blur(10px) saturate(1.05);
+  transform: translate3d(0, 0, 0);
+  animation: site-aurora-drift 26s ease-in-out infinite;
+}
+
+@keyframes site-aurora-drift {
+  0%,
+  100% {
+    background-position: 10% 20%;
+  }
+  50% {
+    background-position: 90% 80%;
+  }
+}
+
+/* 开屏动画：鲸鱼 logo × 命令行 */
+.intro-splash {
+  color: var(--foreground);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.intro-splash-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(110% 80% at 50% -10%, color-mix(in srgb, var(--palette-sky) 28%, transparent) 0%, transparent 58%),
+    radial-gradient(90% 70% at 12% 18%, color-mix(in srgb, var(--palette-pink) 22%, transparent) 0%, transparent 62%),
+    radial-gradient(80% 65% at 92% 78%, color-mix(in srgb, var(--palette-blue) 18%, transparent) 0%, transparent 60%),
+    linear-gradient(180deg, color-mix(in srgb, var(--background) 92%, white), var(--background));
+  filter: saturate(1.08);
+}
+
+.intro-splash-scan {
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 220deg,
+    transparent 0deg,
+    color-mix(in srgb, var(--palette-sky) 18%, transparent) 40deg,
+    transparent 90deg,
+    color-mix(in srgb, var(--palette-pink) 14%, transparent) 160deg,
+    transparent 260deg
+  );
+  animation: intro-splash-scan 2.8s ease-in-out both;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+@keyframes intro-splash-scan {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-10deg) scale(1.08);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(0, -4%, 0) rotate(10deg) scale(1.1);
+    opacity: 0.25;
+  }
+}
+
+.intro-splash-inner {
+  position: relative;
+  z-index: 1;
+  width: min(860px, calc(100vw - 2rem));
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+}
+
+.intro-splash-logoWrap {
+  position: relative;
+  width: min(220px, 52vw);
+  height: min(220px, 52vw);
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in_oklab, var(--surface) 82%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent),
+    0 22px 60px -32px var(--accent-glow);
+  backdrop-filter: blur(12px);
+  animation:
+    intro-splash-pop 760ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    intro-splash-float 4.8s ease-in-out infinite;
+}
+
+@keyframes intro-splash-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.2deg);
+  }
+}
+
+@keyframes intro-splash-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.intro-splash-logo {
+  width: 64%;
+  height: 64%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 30px color-mix(in srgb, var(--accent) 22%, transparent));
+  animation: intro-splash-wiggle 2.4s ease-in-out infinite;
+}
+
+@keyframes intro-splash-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-2deg);
+  }
+  70% {
+    transform: rotate(2deg);
+  }
+}
+
+.intro-splash-ripple {
+  position: absolute;
+  inset: -18%;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--palette-sky) 28%, transparent);
+  animation: intro-splash-ripple 1.9s ease-out both;
+  opacity: 0;
+}
+
+@keyframes intro-splash-ripple {
+  0% {
+    transform: scale(0.88);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(1.12);
+    opacity: 0;
+  }
+}
+
+.intro-splash-terminal {
+  width: min(680px, 100%);
+  border-radius: 18px;
+  background: color-mix(in_oklab, var(--surface) 86%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+  box-shadow: 0 18px 52px -38px var(--accent-glow);
+  backdrop-filter: blur(12px);
+  padding: 18px 18px;
+  animation: intro-splash-rise 820ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 120ms;
+}
+
+@keyframes intro-splash-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro-splash-prompt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+}
+
+.intro-splash-dollar {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.intro-splash-cmd {
+  color: var(--foreground);
+}
+
+.intro-splash-cursor {
+  width: 0.55ch;
+  height: 1.15em;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--palette-blue), var(--palette-pink));
+  animation: cli-cursor-blink 1.05s step-end infinite;
+}
+
+.intro-splash-tagline {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intro-splash-skip {
+  margin-top: 8px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  background: color-mix(in_oklab, var(--surface) 78%, transparent);
+  padding: 11px 16px;
+  font-size: 13px;
+  color: var(--muted);
+  backdrop-filter: blur(10px);
+  transition: 180ms ease;
+}
+
+@media (min-width: 640px) {
+  .intro-splash-inner {
+    gap: 26px;
+  }
+  .intro-splash-logoWrap {
+    width: 240px;
+    height: 240px;
+  }
+  .intro-splash-terminal {
+    width: 720px;
+    padding: 20px 20px;
+  }
+  .intro-splash-prompt {
+    font-size: 17px;
+  }
+  .intro-splash-tagline {
+    font-size: 13px;
+  }
+}
+
+.intro-splash-skip:hover {
+  color: var(--foreground);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.intro-splash-out {
+  animation: intro-splash-out 520ms ease forwards;
+}
+
+@keyframes intro-splash-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-splash,
+  .intro-splash-bg,
+  .intro-splash-scan,
+  .intro-splash-logoWrap,
+  .intro-splash-terminal {
+    animation: none !important;
+  }
+}
+
+.site-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: cli-border-shift 14s ease-in-out infinite;
+}
+
+.site-orb-1 {
+  width: min(480px, 90vw);
+  height: min(480px, 90vw);
+  top: -8%;
+  right: -12%;
+  background: var(--palette-blue);
+}
+
+.site-orb-2 {
+  width: min(360px, 70vw);
+  height: min(360px, 70vw);
+  bottom: 15%;
+  left: -8%;
+  background: var(--palette-pink);
+  animation-delay: -7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-aurora {
+    animation: none;
+    background-position: 45% 45%;
+    opacity: 0.18;
+  }
+
+  .site-orb {
+    animation: none;
+    opacity: 0.22;
+  }
+}
+
+/* 首页大屏 Hero：慢速渐变 + 标题渐入 */
+@keyframes hero-open-mesh {
+  0%,
+  100% {
+    background-position: 0% 42%;
+  }
+  50% {
+    background-position: 100% 58%;
+  }
+}
+
+@keyframes hero-open-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.15rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-open-mesh {
+  background: linear-gradient(
+    125deg,
+    var(--palette-blue),
+    var(--palette-pink),
+    var(--palette-sky),
+    color-mix(in srgb, var(--palette-blue) 70%, var(--palette-cream) 30%),
+    var(--palette-blue)
+  );
+  background-size: 320% 320%;
+  animation: hero-open-mesh 24s ease-in-out infinite;
+}
+
+.hero-open-fade-up {
+  animation: hero-open-fade-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-open-delay-1 {
+  animation-delay: 0.06s;
+}
+
+.hero-open-delay-2 {
+  animation-delay: 0.12s;
+}
+
+.hero-open-delay-3 {
+  animation-delay: 0.2s;
+}
+
+.hero-open-delay-4 {
+  animation-delay: 0.28s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-open-mesh {
+    animation: none;
+    background-position: 45% 45%;
+  }
+
+  .hero-open-fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 
 body {
   background: var(--background);
+  background-image: var(--hero-glow);
+  background-attachment: fixed;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
