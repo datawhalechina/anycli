@@ -4,9 +4,9 @@
 
 ## 环境准备
 
-- Node.js（建议使用仓库当前 `package.json` 兼容的版本）
-- MySQL（必需）
-- Redis（可选，用于缓存与 PV 聚合写回；未配置时相关能力会降级/跳过）
+- [Node.js](https://nodejs.org/)（建议使用仓库当前 `package.json` 兼容的版本）
+- [MySQL](https://www.mysql.com/)（必需）
+- [Redis](https://redis.io/)（可选，用于缓存与 PV 聚合写回；未配置时相关能力会降级/跳过）
 
 ## 安装依赖
 
@@ -16,15 +16,15 @@ npm install
 
 ## 环境变量
 
-复制 `.env.example` 为 `.env` 并填写：
+复制 [`.env.example`](.env.example) 为 `.env` 并填写：
 
 ```bash
 cp .env.example .env
 ```
 
-至少需要数据库相关变量（具体字段以 `.env.example` 为准）。
+至少需要数据库相关变量（具体字段以 [`.env.example`](.env.example) 为准）。
 
-## 数据库（Prisma）
+## 数据库（[Prisma](https://www.prisma.io/)）
 
 ```bash
 npx prisma migrate deploy
@@ -38,9 +38,9 @@ npx prisma migrate deploy
 npm run dev
 ```
 
-打开 `http://localhost:3000`。
+打开 [http://localhost:3000](http://localhost:3000)。
 
-## CLI（packages/anycli）
+## CLI（[packages/anycli](packages/anycli)）
 
 开发/构建：
 
@@ -51,8 +51,10 @@ node packages/anycli/dist/index.js --help
 
 ## 常用脚本
 
-- Lint：`npm run lint`
-- Build：`npm run build`
-- Start：`npm run start`
-- Sync GitHub Stars：`npm run stars:sync`
+| 命令 | 说明 |
+| --- | --- |
+| `npm run lint` | Lint 代码 |
+| `npm run build` | 构建站点 |
+| `npm run start` | 启动生产服务 |
+| `npm run stars:sync` | 同步 GitHub Stars |
 
