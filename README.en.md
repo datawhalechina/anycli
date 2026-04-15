@@ -144,7 +144,7 @@ Please install and verify a CLI tool using AnyCLI safely. Follow these steps:
 
 See [DEVELOPMENT.md](DEVELOPMENT.md).
 
-## �� License
+## 📄 License
 
 This project is open-sourced under the [MIT License](LICENSE).
 
