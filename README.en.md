@@ -14,15 +14,15 @@
   </p>
 
   <p>
-    <a href="README.md">简体中文</a> | <a href="http://anycli.linklearner.com/">🌐 Live Demo</a>
+    <a href="README.md">简体中文</a> | <a href="https://anycli.linklearner.com/">🌐 Live Demo</a>
   </p>
 
   <p>
-    <a href="#-quick-start">⚡ Quick Start</a> ·
-    <a href="#-key-features">✨ Features</a> ·
-    <a href="#-screenshots">📸 Screenshots</a> ·
-    <a href="#-how-agents-use-it">🤖 Agent Usage</a> ·
-    <a href="#-development">🔧 Development</a>
+    <a href="#quick-start">⚡ Quick Start</a> ·
+    <a href="#key-features">✨ Features</a> ·
+    <a href="#screenshots">📸 Screenshots</a> ·
+    <a href="#how-agents-use-it">🤖 Agent Usage</a> ·
+    <a href="#development">🔧 Development</a>
   </p>
 </div>
 
@@ -83,7 +83,7 @@ anycli install <slug> --yes --json
 
 ## 📸 Screenshots
 
-> 🔗 **Live Demo**: [anycli.linklearner.com](http://anycli.linklearner.com/)
+> 🔗 **Live Demo**: [anycli.linklearner.com](https://anycli.linklearner.com/)
 
 <table>
 <tr>
@@ -123,22 +123,22 @@ Please install and verify a CLI tool using AnyCLI safely. Follow these steps:
 3) Review the output and check example_usage. Pick the safest command for verification.
 4) Install the tool safely:
    anycli install {{slug}} --json   # confirm this command is safe
-   anycli install {{slug}} --yes    # execute installation
+   anycli install {{slug}} --yes --json    # execute installation
 5) Run a minimal verification command to ensure the tool works
    (e.g., <binary> --help or a safe command from example_usage).
 6) Summarize the output of the verification command.
 ```
 
-> 📖 For more templates, see [`/docs`](http://anycli.linklearner.com/docs) on the website.
+> 📖 For more templates, see [`/docs`](https://anycli.linklearner.com/docs) on the website.
 
 ## 🌐 Website Pages
 
 | Page | Path | Description |
 | --- | --- | --- |
-| 🔍 Explore | [`/clis`](http://anycli.linklearner.com/clis) | Browse all registered CLI tools |
-| 📤 Publish | [`/publish`](http://anycli.linklearner.com/publish) | Submit a new tool (requires admin review) |
-| 📖 Docs | [`/docs`](http://anycli.linklearner.com/docs) | Agent-first usage guide + prompt templates |
-| ℹ️ About | [`/about`](http://anycli.linklearner.com/about) | Project info |
+| 🔍 Explore | [`/clis`](https://anycli.linklearner.com/clis) | Browse all registered CLI tools |
+| 📤 Publish | [`/publish`](https://anycli.linklearner.com/publish) | Submit a new tool (requires admin review) |
+| 📖 Docs | [`/docs`](https://anycli.linklearner.com/docs) | Agent-first usage guide + prompt templates |
+| ℹ️ About | [`/about`](https://anycli.linklearner.com/about) | Project info |
 
 ## 🔧 Development
 
