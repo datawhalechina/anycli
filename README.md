@@ -14,15 +14,15 @@
   </p>
 
   <p>
-    <a href="README.en.md">English</a> | <a href="http://anycli.linklearner.com/">🌐 在线体验</a>
+    <a href="README.en.md">English</a> | <a href="https://anycli.linklearner.com/">🌐 在线体验</a>
   </p>
 
   <p>
-    <a href="#-快速开始">⚡ 快速开始</a> ·
-    <a href="#-核心特性">✨ 核心特性</a> ·
-    <a href="#-站点预览">📸 站点预览</a> ·
-    <a href="#-agent-如何使用">🤖 Agent 使用</a> ·
-    <a href="#-开发指南">🔧 开发指南</a>
+    <a href="#快速开始">⚡ 快速开始</a> ·
+    <a href="#核心特性">✨ 核心特性</a> ·
+    <a href="#站点预览">📸 站点预览</a> ·
+    <a href="#agent-如何使用">🤖 Agent 使用</a> ·
+    <a href="#开发指南">🔧 开发指南</a>
   </p>
 </div>
 
@@ -83,7 +83,7 @@ anycli install <slug> --yes --json
 
 ## 📸 站点预览
 
-> 🔗 **在线体验**：[anycli.linklearner.com](http://anycli.linklearner.com/)
+> 🔗 **在线体验**：[anycli.linklearner.com](https://anycli.linklearner.com/)
 
 <table>
 <tr>
@@ -125,22 +125,22 @@ Please install and verify a CLI tool using AnyCLI safely. Follow these steps:
 3) Review the output and check example_usage. Pick the safest command for verification.
 4) Install the tool safely:
    anycli install {{slug}} --json   # confirm this command is safe
-   anycli install {{slug}} --yes    # execute installation
+   anycli install {{slug}} --yes --json    # execute installation
 5) Run a minimal verification command to ensure the tool works
    (e.g., <binary> --help or a safe command from example_usage).
 6) Summarize the output of the verification command.
 ```
 
-> 📖 站内文档 [`/docs`](http://anycli.linklearner.com/docs) 提供了更完整的 Agent 提示词模板与可复制代码块。
+> 📖 站内文档 [`/docs`](https://anycli.linklearner.com/docs) 提供了更完整的 Agent 提示词模板与可复制代码块。
 
 ## 🌐 站点导航
 
 | 页面 | 路径 | 说明 |
 | --- | --- | --- |
-| 🔍 探索 CLI | [`/clis`](http://anycli.linklearner.com/clis) | 浏览所有已注册的 CLI 工具 |
-| 📤 发布 CLI | [`/publish`](http://anycli.linklearner.com/publish) | 提交新工具（需管理员审核） |
-| 📖 文档 | [`/docs`](http://anycli.linklearner.com/docs) | Agent 优先的使用方式 + Prompt 模板 |
-| ℹ️ 关于 | [`/about`](http://anycli.linklearner.com/about) | 项目介绍 |
+| 🔍 探索 CLI | [`/clis`](https://anycli.linklearner.com/clis) | 浏览所有已注册的 CLI 工具 |
+| 📤 发布 CLI | [`/publish`](https://anycli.linklearner.com/publish) | 提交新工具（需管理员审核） |
+| 📖 文档 | [`/docs`](https://anycli.linklearner.com/docs) | Agent 优先的使用方式 + Prompt 模板 |
+| ℹ️ 关于 | [`/about`](https://anycli.linklearner.com/about) | 项目介绍 |
 
 ## 🔧 开发指南
 
