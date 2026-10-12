@@ -45,7 +45,7 @@ npm run dev
 开发/构建：
 
 ```bash
-npm run -w anycli build
+npm run -w @lightcity/anycli build
 node packages/anycli/dist/index.js --help
 ```
 
