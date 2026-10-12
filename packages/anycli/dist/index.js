@@ -84,6 +84,8 @@ program
         return;
     }
     const exec = await execCommand(out.install.command);
+    if (exec.exitCode !== 0)
+        process.exitCode = exec.exitCode;
     if (wantJson) {
         process.stdout.write(JSON.stringify({
             status: exec.exitCode === 0 ? "success" : "error",
@@ -97,7 +99,6 @@ program
     process.stdout.write(exec.stdout);
     if (exec.exitCode !== 0) {
         process.stderr.write(exec.stderr || "安装失败。\n");
-        process.exitCode = exec.exitCode;
     }
 });
 program.parseAsync(process.argv).catch((err) => {
