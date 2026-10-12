@@ -49,6 +49,14 @@ npm run -w anycli build
 node packages/anycli/dist/index.js --help
 ```
 
+自定义安装命令回归测试（先执行上面的 CLI 构建命令）：
+
+```bash
+node --import tsx --test packages/anycli/tests/custom-install-command.test.mjs
+```
+
+测试使用真实 CLI 子进程、本地 HTTP 目录桩和临时安装脚本，覆盖 search、dry-run、确认安装、工作目录与带空格的参数；不连接线上目录或安装第三方软件。发布表单的「其它 / 脚本」方式保存为 `script`，其 `installPackage` 应填写完整安装命令，命令生成器会原样返回。
+
 ## 常用脚本
 
 | 命令 | 说明 |

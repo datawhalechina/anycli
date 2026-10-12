@@ -100,6 +100,8 @@ export function installCommand(row: {
   const { installMethod, installPackage } = row;
   if (!installMethod || !installPackage) return null;
   switch (installMethod) {
+    case "script":
+      return installPackage;
     case "brew":
       return `brew install ${installPackage}`;
     case "npm":
